@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+	--colour-morning: #6DB326;
+	--colour-evening: #26B3B3;
+	--colour-unavailable: #B32626;
+
+	--colour-background: #f5f5f5;
+	--colour-surface: white;
+	--colour-light: white;
+	--colour-button: #6D26B3;
+
+	--colour-border: #ccc;
+
+	--colour-text: #333;
+	--colour-muted: #888;
+
+	--colour-selected: rgba(0, 0, 0, 0.35);
+	
+	--button-radius: 0.5rem;
+	
+	--font: "Roboto", sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+	font-family: var(--font);
+}
+
+body {
+	margin: 0;
+	padding: 0.5rem;
+	background-color: var(--colour-background);
+}
+
+button {
+	border: none;
+	border-radius: var(--button-radius);
+}
+
+.calendar-container {
+	width: 100%;
+	background-color: var(--colour-surface);
+	padding: 1rem;
+	border-radius: 0.8rem;
+}
+
+
+/* -------------------------
+   Calendar Header
+------------------------- */
+
+.calendar-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.calendar-header h1 {
+	margin: 0;
+	font-size: 1.5rem;
+}
+
+.calendar-controls {
+	display: flex;
+	gap: 1rem;
+}
+
+.calendar-controls button {
+	padding: 0.5rem;
+	color: var(--colour-button);
+	background-color: var(--colour-surface);
+	font-size: 0.8rem;
+}
+
+
+/* -------------------------
+   Calendar
+------------------------- */
+
+.calendar {
+	display: grid;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	width: 100%;
+	gap: 0.25rem;
+}
+
+.weekday {
+	min-width: 0;
+	text-align: center;
+	font-size: 0.8rem;
+	color: var(--colour-muted);
+	margin-bottom: 1rem;
+	overflow: hidden;
+}
+
+.day {
+	width: 100%;
+	min-width: 0;
+	min-height: 4rem;
+	padding: 0.25rem;
+	border-radius: var(--button-radius);
+	background-color: var(--colour-surface);
+
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+
+	overflow: hidden;
+}
+
+.date {
+	font-size: 0.8rem;
+	font-weight: bold;
+	text-align: center;
+}
+
+
+/* -------------------------
+   Time Display
+------------------------- */
+
+.time-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 0.8rem;
+	white-space: nowrap;
+}
+
+
+/* -------------------------
+   Availability
+------------------------- */
+
+.day.morning {
+	background-color: var(--colour-morning);
+	color: var(--colour-light);
+}
+
+.day.evening {
+	background-color: var(--colour-evening);
+	color: var(--colour-light);
+}
+
+.day.unavailable {
+	background-color: var(--colour-unavailable);
+	color: var(--colour-light);
+}
+
+.day.selected {
+	outline: 2px solid var(--colour-selected);
+	outline-offset: -2px;
+}
+
+
+/* -------------------------
+   Availability Options
+------------------------- */
+
+.availability-options {
+	display: none;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 0.5rem;
+	margin-top: 0.8rem;
+}
+
+.availability-options.visible {
+	display: grid;
+}
+
+.availability-options button {
+	background-color: var(--colour-surface);
+	padding: 0.8rem;
+	font-size: 0.8rem;
+}
+
+.availability-options button.selected {
+	outline: 2px solid var(--colour-selected);
+	outline-offset: -2px;
+}
+
+.availability-options button[data-state="clear"] {
+	color: var(--colour-button);
+	padding: 0;
+	font-size: 1.5rem;
+}
+
+.availability-options button[data-state="morning"] {
+	background-color: var(--colour-morning);
+	color: var(--colour-light);
+}
+
+.availability-options button[data-state="evening"] {
+	background-color: var(--colour-evening);
+	color: var(--colour-light);
+}
+
+.availability-options button[data-state="unavailable"] {
+	background-color: var(--colour-unavailable);
+	color: var(--colour-light);
+}
+
+
+/* -------------------------
+   Time Controls
+------------------------- */
+
+.selected-time {
+	display: none;
+	text-align: center;
+}
+
+.selected-time.visible {
+	display: block;
+}
+
+.time-type {
+	display: grid;
+	grid-template-columns: auto auto auto minmax(0, 1fr);
+	gap: 0.5rem;
+	margin-top: 0.8rem;
+}
+
+.time-type button {
+	padding: 0.8rem 0.4rem;
+	color: var(--colour-button);
+	background-color: var(--colour-surface);
+	font-size: 0.8rem;
+}
+
+.time-type button.active {
+	font-weight: bold;
+}
+
+.time-type span {
+	padding: 0.8rem 0;
+	color: var(--colour-button);
+}
+
+.time-input {
+	min-width: 0;
+	width: 100%;
+	padding: 0.8rem 0;
+	border: 1px solid var(--colour-border);
+	border-radius: var(--button-radius);
+	background-color: var(--colour-surface);
+	font-size: 0.8rem;
+}
+
+.time-input:disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+
+/* -------------------------
+   Action Buttons
+------------------------- */
+
+.save-selection,
+.convert-image,
+.return-editor {
+	width: 100%;
+	margin-top: 1rem;
+	padding: 0.8rem;
+	background-color: var(--colour-surface);
+	color: var(--colour-button);
+	font-size: 1rem;
+}
+
+
+/* -------------------------
+   Legend
+------------------------- */
+
+.legend {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin-top: 1rem;
+	font-size: 0.8rem;
+}
+
+.legend-item {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.colour {
+	width: 1rem;
+	height: 1rem;
+	border-radius: 0.25rem;
+}
+
+.morning-colour {
+	background-color: var(--colour-morning);
+}
+
+.evening-colour {
+	background-color: var(--colour-evening);
+}
+
+.unavailable-colour {
+	background-color: var(--colour-unavailable);
+}
+
+
+/* -------------------------
+   Convert to Image
+------------------------- */
+
+.calendar-container.date-selected .convert-image {
+	display: none;
+}
+
+
+/* -------------------------
+   Image Preview
+------------------------- */
+
+.image-preview {
+	display: none;
+	width: 100%;
+}
+
+.image-preview.visible {
+	display: block;
+}
+
+#calendar-image {
+	display: block;
+	width: 100%;
+	height: auto;
+	border: 1px solid var(--colour-border);
+	border-radius: 0.8rem;
+}
+
+.calendar-container.previewing
+	> :not(.image-preview) {
+	display: none;
+}
+
+
+/* -------------------------
+   Image Export
+------------------------- */
+
+.calendar-container.exporting {
+	border-radius: 0;
+}
+
+.calendar-container.exporting .calendar-controls {
+	display: none;
+}
+
+.calendar-container.exporting .calendar-header {
+	justify-content: center;
+}
+
+.calendar-container.exporting .convert-image {
+	display: none;
+}

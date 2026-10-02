@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Availability Calendar</title>
+	<link rel="stylesheet" href="styles.css?v=5">
+</head>
+
+<body>
+
+    <div class="calendar-container">
+
+        <div class="calendar-header">
+
+            <h1 id="month"></h1>
+
+            <div class="calendar-controls">
+				<button id="today">Today</button>
+                <button id="previous">&#10094</button>
+                <button id="next">&#10095</button>
+            </div>
+
+        </div>
+
+        <div class="calendar" id="calendar">
+
+            <!-- Weekdays -->
+            <div class="weekday">Mon</div>
+            <div class="weekday">Tue</div>
+            <div class="weekday">Wed</div>
+            <div class="weekday">Thu</div>
+            <div class="weekday">Fri</div>
+            <div class="weekday">Sat</div>
+            <div class="weekday">Sun</div>
+
+            <!-- Javascript will insert dates here -->
+
+        </div>
+		
+		<div class="availability-options" id="availability-options">
+			<button data-state="morning">AM</button>
+			<button data-state="evening">PM</button>
+			<button data-state="unavailable">N/A</button>
+			<button data-state="clear">×</button>
+		</div>
+		
+		<div class="selected-time" id="selected-time"></div>
+
+        <div class="legend">
+
+            <div class="legend-item">
+                <div class="colour morning-colour"></div>
+                Morning
+            </div>
+
+            <div class="legend-item">
+                <div class="colour evening-colour"></div>
+                Evening
+            </div>
+
+            <div class="legend-item">
+                <div class="colour unavailable-colour"></div>
+                Unavailable
+            </div>
+
+        </div>
+		
+		<button
+			id="convert-image"
+			class="convert-image"
+			type="button"
+		>
+			Convert to Image
+		</button>
+
+		<div
+			id="image-preview"
+			class="image-preview"
+		>
+			<img
+				id="calendar-image"
+				alt="Calendar availability"
+			>
+
+			<button
+				id="return-editor"
+				class="return-editor"
+				type="button"
+			>
+				Return to Editor
+			</button>
+		</div>
+    </div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+	<script src="main.js?v=8"></script>
+</body>
+</html>
