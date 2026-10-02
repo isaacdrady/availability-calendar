@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&family=Roboto:ital@0;1&display=swap');
 
 :root {
 	--colour-morning: #6DB326;
@@ -19,12 +19,12 @@
 	
 	--button-radius: 0.5rem;
 	
-	--font: "Roboto", sans-serif;
+	--font-body: "Roboto", sans-serif;
 }
 
 * {
 	box-sizing: border-box;
-	font-family: var(--font);
+	font-family: var(--font-body);
 }
 
 body {
@@ -53,16 +53,17 @@ button {
 	text-align: center;
 	margin: 0.5rem;
 	font-size: 1.5rem;
-	font-weight: bold;
 	letter-spacing: -0.08rem;
 }
 
 .logo-when {
 	color: var(--colour-button);
+	font-family: "Momo Trust Display", sans-serif;
 }
 
 .logo-works {
 	color: var(--colour-evening);
+	font-family: "Momo Trust Display", sans-serif;
 }
 
 /* -------------------------
