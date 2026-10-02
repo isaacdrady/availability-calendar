@@ -45,6 +45,25 @@ button {
 	border-radius: 0.8rem;
 }
 
+/* -------------------------
+   Logo
+------------------------- */
+
+.logo {
+	text-align: center;
+	margin: 0.5rem;
+	font-size: 1.5rem;
+	font-weight: bold;
+	letter-spacing: -0.08rem;
+}
+
+.logo-when {
+	color: var(--colour-button);
+}
+
+.logo-works {
+	color: var(--colour-evening);
+}
 
 /* -------------------------
    Calendar Header
@@ -59,7 +78,7 @@ button {
 
 .calendar-header h1 {
 	margin: 0;
-	font-size: 1.5rem;
+	font-size: 1rem;
 }
 
 .calendar-controls {
